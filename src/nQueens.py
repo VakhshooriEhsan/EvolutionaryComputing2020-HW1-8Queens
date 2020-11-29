@@ -1,24 +1,19 @@
-# Representation: Permutations
-# Recombination: 'Cut-and-crossfill' crossover, probability: 100%
-# Mutation: Swap, probability: 80%
-# Parent selection: Best 2 out of random 5
-
-# Survival selection: Replace worst
-# Population size: 100
-# Number of offspring: 2
-# Initialisation: Random
-# Termination condition: Solution or 10000 fitness evaluations
-
 from numpy import random
 
-def Eval(gene):
+def Initialisation(n, m):
+    mems = []
+    for _ in range(n):
+        mems += [random.permutation(m)]
+    return mems
+
+def Fitness(mem):
     penalty = 0
-    size = len(gene)
+    size = len(mem)
     for i in range(size-1):
         for j in range(i+1, size):
-            if gene[i]-i == gene[j]-j or gene[i]+i == gene[j]+j or gene[i] == gene[j]:
+            if mem[i]-i == mem[j]-j or mem[i]+i == mem[j]+j or mem[i] == mem[j]:
                 penalty += 1
-    return penalty
+    return 1.0/(penalty+1)
 
 def Recombination(gene1, gene2):
     size = len(gene1)
@@ -44,19 +39,13 @@ def Parent_selection(genes):
     ngenes = []
     for i in random.permutation(size)[:num]:
         ngenes += [genes[i]]
-    ngenes.sort(key=Eval)
+    ngenes.sort(key=Fitness)
     return [ngenes[0], ngenes[1]]
 
-def Initialisation(n, size):
-    genes = []
-    for i in range(n):
-        genes += [random.permutation(size)]
-    return genes
+m = 100 # population number
+n = 8 # n-queen
+mems = Initialisation(m, n) # population initialisation
+mems.sort(key=Fitness)
 
-
-population = 100
-size = 8
-genes = Initialisation(population, size)
-
-
-print(genes)
+for mem in mems:
+    print(Fitness(mem))
