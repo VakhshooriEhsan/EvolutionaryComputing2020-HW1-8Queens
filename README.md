@@ -5,7 +5,7 @@ Place n queens on an nxn chessboard in such a way that they cannot check each ot
 
 ## 2. Representation:
 * Phenotype: a board configuration
-* Genotype: a permutation of the numbers 0-n
+* Genotype: a permutation of the numbers 0, 1, ...(n-1)
 
 ![representation](https://raw.githubusercontent.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/representation.PNG)
 
@@ -14,6 +14,9 @@ Initialisation(n, m) function returns m random members of n-queens genotype.
 
 ## 4. Fitness:
 Fitness(mem) function get mem value as a n-queens genotype and returns 1/(penalty+1) that penalty is number of each pair of queens that check each other.
+
+## 5. Parent selection:
+
 
 <!--
 # Representation: Permutations
