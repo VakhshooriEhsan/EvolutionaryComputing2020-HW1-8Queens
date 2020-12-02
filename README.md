@@ -51,15 +51,3 @@ Survival_selection(mems, child) function get population members & 1 child and re
 * diagram of Max fitness & k-max fitness average of each generation
 
 ![representation](https://raw.githubusercontent.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/Figure_2.png)
-
-<!--
-# Representation: Permutations
-# Recombination: 'Cut-and-crossfill' crossover, probability: 100%
-# Mutation: Swap, probability: 80%
-# Parent selection: Best 2 out of random 5
-# Survival selection: Replace worst
-# Population size: 100
-# Number of offspring: 2
-# Initialisation: Random
-# Termination condition: Solution or 10000 fitness evaluations
--->
