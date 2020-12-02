@@ -7,9 +7,9 @@
 $ pip install numpy
 $ pip install matplotlib
 ```
-* clon and run:
+* clone and run:
 ```bash
-$ git clon https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens.git
+$ git clone https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens.git
 $ cd EvolutionaryComputing2020-HW1-8Queens/src
 $ python nQueens.py
 ```
