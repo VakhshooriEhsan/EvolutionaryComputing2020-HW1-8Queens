@@ -49,7 +49,7 @@ def Mutation(mem, prob):
     mem[p[0]], mem[p[1]] = mem[p[1]], mem[p[0]]
     return mem
 
-def Insert(mems, child):
+def Survival_selection(mems, child):
     size = len(mems)
     cf = Fitness(child)
     for i in range(size):
@@ -97,8 +97,8 @@ while Fitness(mems[0]) < 1 and T > 0 :
     childs = Recombination(parents[0], parents[1], Rprob)
     childs[0] = Mutation(childs[0], Mprob)
     childs[1] = Mutation(childs[1], Mprob)
-    Insert(mems, childs[0])
-    Insert(mems, childs[1])
+    Survival_selection(mems, childs[0])
+    Survival_selection(mems, childs[1])
     data += [mems.copy()]
 
 
