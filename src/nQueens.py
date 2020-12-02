@@ -1,4 +1,5 @@
 import bisect
+import math
 from numpy import random
 from numpy import zeros
 import matplotlib.pyplot as plt
@@ -57,18 +58,21 @@ def Insert(mems, child):
             mems.pop()
             break
 
-def Plt_board(n, mem):
-    chessboard = zeros((n, n))
-    chessboard[1::2,0::2] = 1
-    chessboard[0::2,1::2] = 1
-    plt.figure(1)
-    plt.imshow(chessboard, cmap='binary')
-    for i in range(n):
-        x = i
-        y = mem[i]
-        plt.text(x, y, '♕', fontsize=20, ha='center', va='center', color='black' if (x - y) % 2 == 0 else 'white')
-    print(mem)
-
+def Plt_board(mems):
+    size = len(mems)
+    yb = math.ceil(math.sqrt(size))
+    xb = math.ceil(size/yb)
+    n = len(mems[0])
+    for i in range(size):
+        plt.subplot(xb, yb, i+1)
+        chessboard = zeros((n, n))
+        chessboard[1::2,0::2] = 1
+        chessboard[0::2,1::2] = 1
+        plt.imshow(chessboard, cmap='binary')
+        for j in range(n):
+            x = j
+            y = mems[i][j]
+            plt.text(x, y, '♕', fontsize=40/xb, ha='center', va='center', color='black' if (x - y) % 2 == 0 else 'white')
 
 # Variables initialisation:
 
@@ -78,13 +82,14 @@ num = 5 # number of select for parent selection
 Rprob = 1.0 # Recombination probability
 Mprob = 0.8 # Mutation probability
 T = 10000 # Termination condition
+data = [] # used for analyze
 
 
 # Genetic-algorithm:
 
 mems = Initialisation(m, n) # population initialisation
 mems.sort(key=Fitness, reverse=True) # sort members by fitness
-data = [Fitness(mems[0])] # used for Analyze
+data += [mems.copy()]
 
 while Fitness(mems[0]) < 1 and T > 0 :
     T -= 1
@@ -94,16 +99,36 @@ while Fitness(mems[0]) < 1 and T > 0 :
     childs[1] = Mutation(childs[1], Mprob)
     Insert(mems, childs[0])
     Insert(mems, childs[1])
-    data += [Fitness(mems[0])]
+    data += [mems.copy()]
 
 
 # Analyze:
 
-Plt_board(n, mems[0])
+maxFit = [] # max fitness
+k = 10
+avgFits = [] # avg of k-max fitness
+l = len(data) # last result
+t = 12 # number of result show
+
+for i in range(l):
+    maxFit += [Fitness(data[i][0])]
+    tmp = 0
+    for j in range(min(k, len(data[i]))):
+        tmp += Fitness(data[i][j])
+    avgFits += [tmp/k]
+
+plt.figure(1)
+Plt_board(data[l-1][:t])
 
 plt.figure(2)
-plt.plot(data)
-plt.ylabel('Fitness')
+plt.subplot(2, 1, 1)
+plt.plot(maxFit, '.-')
+plt.title('Fitness Analyze')
+plt.ylabel('Max Fitness')
+
+plt.subplot(2, 1, 2)
+plt.plot(avgFits, '.-')
 plt.xlabel('Generations')
+plt.ylabel('Avg of k-max Fitness')
 
 plt.show()
