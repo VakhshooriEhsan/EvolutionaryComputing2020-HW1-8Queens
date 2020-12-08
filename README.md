@@ -23,7 +23,7 @@ Place n queens on an nxn chessboard in such a way that they cannot check each ot
 * Phenotype: a board configuration
 * Genotype: a permutation of the numbers 0, 1, ...(n-1)
 
-![f1](https://raw.githubusercontent.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/representation.PNG)
+![representation](https://raw.githubusercontent.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/representation.PNG)
 
 ### 2.2. Initialisation:
 Initialisation(n, m) function returns m random members of n-queens genotype.
