@@ -23,7 +23,7 @@ Place n queens on an nxn chessboard in such a way that they cannot check each ot
 * Phenotype: a board configuration
 * Genotype: a permutation of the numbers 0, 1, ...(n-1)
 
-![representation](https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/representation.PNG?raw=true)
+![representation](https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/blob/master/docs/imgs/representation.PNG?raw=true)
 
 ### 2.2. Initialisation:
 Initialisation(n, m) function returns m random members of n-queens genotype.
@@ -46,8 +46,8 @@ Survival_selection(mems, child) function get population members & 1 child and re
 ## 3. Result and Analyze:
 * Best answers of final result
 
-![representation](https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/Figure_1.png?raw=true)
+![representation](https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/blob/master/docs/imgs/Figure_1.png?raw=true)
 
 * diagram of Max fitness & k-max fitness average of each generation
 
-![representation](https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/master/docs/imgs/Figure_2.png?raw=true)
+![representation](https://github.com/VakhshooriEhsan/EvolutionaryComputing2020-HW1-8Queens/blob/master/docs/imgs/Figure_2.png?raw=true)
